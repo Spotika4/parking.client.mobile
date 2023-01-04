@@ -1,15 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="ru.mxmit.parking" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Геолокация</name>
-    <description>
-        Приложение для управления работой на парковке
-    </description>
-    <author email="it@maximum.auto" href="https://maximum.auto">
-        Maximum
-    </author>
+<widget id="%APP_ID%" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>%APP_NAME%</name>
+    <description>%APP_DESCRIPTION%</description>
+    <author email="%APP_AUTHOR_EMAIL%" href="%APP_AUTHOR_HREF%">%APP_AUTHOR%</author>
     <content src="index.html" />
-    <access origin="http://parking.mxmit.ru:9443" />
-    <access origin="https://parking.mxmit.ru:9443" />
+    <access origin="http://%DOMAIN%" />
+    <access origin="https://%DOMAIN%" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

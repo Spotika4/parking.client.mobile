@@ -1,0 +1,11 @@
+{
+  "lang": "ru",
+  "short_name": "Геолокация",
+  "name": "Геолокация",
+  "description": "Приложение для управления работой на парковке",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/"
+}
