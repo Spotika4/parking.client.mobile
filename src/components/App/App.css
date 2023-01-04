@@ -1,0 +1,28 @@
+
+
+.tab-content {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;
+}
+
+.tab-content .tab-pane {
+    position: relative;
+    display: flex;
+    flex: 0;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.tab-content .tab-pane.active {
+    flex: 1;
+}
+
+.nav.nav-tabs {
+    padding-bottom: 3px;
+}

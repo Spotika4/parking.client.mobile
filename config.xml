@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="ru.mxmit.parking" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Геолокация</name>
+    <description>
+        Приложение для управления работой на парковке
+    </description>
+    <author email="it@maximum.auto" href="https://maximum.auto">
+        Maximum
+    </author>
+    <content src="index.html" />
+    <access origin="http://parking.mxmit.ru:9443" />
+    <access origin="https://parking.mxmit.ru:9443" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="SplashMaintainAspectRatio" value="true" />
+        <preference name="SplashShowOnlyFirstTime" value="false" />
+        <preference name="AndroidXEnabled" value="true" />
+        <preference name="enableJetifier" value="true" />
+        <preference name="android-minSdkVersion" value="21" />
+        <preference name="android-targetSdkVersion" value="29" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>
