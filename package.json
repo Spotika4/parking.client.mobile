@@ -21,7 +21,6 @@
     "typescript": "^4.5.4"
   },
   "scripts": {
-    "initialize": "node ./initialize.js --env=production --platform=web1 reco checkversion && react-scripts build && reco copy",
     "start": "node ./initialize.js --env=production --platform=web reco checkversion && react-scripts build && reco copy && reco serve",
     "start:test": "node ./initialize.js --env=test --platform=web reco checkversion && react-scripts build && reco copy && reco serve",
     "start:test.local": "node ./initialize.js --env=local --platform=web reco checkversion && react-scripts build && reco copy && reco serve",
