@@ -1,10 +1,7 @@
 import React from 'react';
 
+import { Header, Tabs, User } from "../../components/UI";
 import { Context } from "../../components/App/Context";
-import { User } from "../../components/App";
-
-import { Header } from "../../components/UI/Header";
-import { Tabs } from "../../components/UI/Tabs";
 
 
 export class Profile extends React.Component {
@@ -14,8 +11,9 @@ export class Profile extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {
 
+        this.state = {
+            id: props.id
         };
 
         this.handleExit = this.handleExit.bind(this);
@@ -32,7 +30,7 @@ export class Profile extends React.Component {
     }
 
     handleExit = (e) => {
-        return this.context.logout();
+        window.dispatchEvent(new CustomEvent(`app.logout`));
     };
 
     render(){

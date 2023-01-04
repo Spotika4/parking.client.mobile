@@ -12,7 +12,7 @@ export class Header extends React.Component {
 
                     {!this.props?.onBackClick ? null : (
                         <h1 className={`d-flex align-items-center`} onClick={this.props?.onBackClick}>
-                            <i className="icon icon-chevron_left d-inline-block" />
+                            <i className="icon icon-chevron_left d-inline-block mt-1" />
                             {this.props.title}
                         </h1>
                     )}
@@ -20,7 +20,7 @@ export class Header extends React.Component {
                     {!this.props?.onClick ? null : (
                         <h1 className={`d-flex align-items-center`} onClick={this.props?.onClick}>
                             {this.props.title}
-                            <i className="icon icon-chevron_right d-inline-block" />
+                            <i className="icon icon-chevron_right d-inline-block mt-1" />
                         </h1>
                     )}
 

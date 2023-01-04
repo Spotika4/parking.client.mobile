@@ -88,25 +88,17 @@ export class Auth extends React.Component {
             loading: true
         }));
 
-        this.context.login({
+        window.dispatchEvent(new CustomEvent(`app.login`, { detail: {
             LOGIN: this.state.data.LOGIN,
             PASSWORD: this.state.data.PASSWORD,
-            UF_PUSH_TOKEN: false
-        }).then((result) => {
-            this.setState((prevState) => ({
-                ...prevState,
-                loading: false
-            }));
-
-            if(result !== true){
-                this.context.dialog({
-                    show: true,
-                    type: 'alert',
-                    header: "Не удалось авторизоваться",
-                    content: "Логин или пароль не верны. Обратитесь в техническую поддержку"
-                })
+            UF_PUSH_TOKEN: false,
+            callback: () => {
+                this.setState((prevState) => ({
+                    ...prevState,
+                    loading: false
+                }));
             }
-        });
+        }}));
     };
 
     render(){

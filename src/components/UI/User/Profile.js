@@ -1,12 +1,9 @@
 import React from 'react';
 
-import { Context } from "../Context";
-import { User } from "../Object";
+import { Api } from "../../App";
 
 
 export class Profile extends React.Component {
-
-    static contextType = Context;
 
 
     constructor(props){
@@ -18,15 +15,13 @@ export class Profile extends React.Component {
     }
 
     componentDidMount = async () => {
-        return await User.get({id: this.state.id}).then(async (result) => {
+        return await Api.User.get({id: this.state.id}).then(async (result) => {
             if(result.success === true){
                 await this.setState((prevState) => ({
                     ...prevState,
                     ...result.data
                 }));
             }
-
-            return result.success;
         });
     };
 

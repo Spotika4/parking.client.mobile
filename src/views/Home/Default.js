@@ -1,25 +1,15 @@
 import React from 'react';
+import { Redirect } from "react-router";
 
-import { Context } from "../../components/App/Context";
-import { Header } from "../../components/UI/Header";
-
+import * as Storage from "../../components/App/Storage";
 
 export class Default extends React.Component {
 
-    static contextType = Context;
-
 
     render(){
-
+        let pathname =( '/home/' + Storage.get('DEFAULT_HOME', 'parking') + '.html').toLowerCase();
         return (
-            <>
-                <Header
-                    title={this.context.state.user.NAME}
-                    onClick={() => this.props.history.push('/profile.html')}
-                />
-
-                <main />
-            </>
+            <Redirect to={{ pathname }} />
         );
     }
 }

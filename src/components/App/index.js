@@ -1,5 +1,6 @@
 import { App } from './App'
 import * as Route from './Route'
-import * as User from './User'
+import * as Request from './Request'
+import * as Api from './Api'
 
-export { App, Route, User }
+export { App, Route, Request, Api }

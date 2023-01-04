@@ -1,5 +1,5 @@
 import * as Storage from "../Storage";
-import * as Api from "../Api";
+import * as Request from "../Request";
 
 
 const current = () => {
@@ -7,7 +7,7 @@ const current = () => {
 };
 
 const get = async (props) => {
-    return await Api.get(`user/${props.id}`, {
+    return await Request.get(`user/${props.id}`, {
         URL: `user/${props.id}`,
     }).then((result) => {
         if(result.success === true){
@@ -19,7 +19,7 @@ const get = async (props) => {
 };
 
 const login = async (props) => {
-    return await Api.post(`token`, {
+    return await Request.post(`token`, {
         LOGIN: props.LOGIN,
         PASSWORD: props.PASSWORD,
         UF_PUSH_TOKEN: false
@@ -36,7 +36,7 @@ const login = async (props) => {
 
 const logout = async () => {
 
-    return await Api.del(`token`, {}).then((result) => {
+    return await Request.del(`token`, {}).then((result) => {
         if(result.success === true){
             localStorage.clear();
         }

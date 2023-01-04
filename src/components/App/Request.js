@@ -2,6 +2,7 @@ import * as Storage from "./Storage";
 
 const request = async (method, props = false, signal = false, requestMethod = 'GET') => {
     let token = Storage.get('UF_TOKEN', null);
+    let db_ver = Storage.get('DB_VER', null);
     let domain = `${process.env.REACT_APP_PROTOCOL}${process.env.REACT_APP_DOMAIN}${process.env.REACT_APP_PATH}`;
 
     let settings = {
@@ -9,7 +10,7 @@ const request = async (method, props = false, signal = false, requestMethod = 'G
         headers: new Headers({
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'DB-VER': null,
+            'DB-VER': db_ver,
             'UF-TOKEN': token
         })
     };
@@ -24,7 +25,18 @@ const request = async (method, props = false, signal = false, requestMethod = 'G
 
     return fetch(domain + method, settings).then(function(result){
 
-        if(result.status === 403 || result.status === 401){
+        if(result.status === 426){
+            window.dispatchEvent(new CustomEvent(`app.update`));
+            window.dispatchEvent(new CustomEvent(`app.stick`, { detail: { text: `Необходимо обновить кеш базы данных сервера` } }));
+            return { status: result.status, success: true, data: [] };
+        }
+
+        if(result.status === 403){
+            return { status: result.status, success: false, data: [] };
+        }
+
+        if(result.status === 401){
+            window.dispatchEvent(new CustomEvent(`app.stick`, { detail: { show: true, text: `${result.status}: ${result.statusText}` } }));
             return { status: result.status, success: false, data: [] };
         }
 

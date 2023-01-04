@@ -11,7 +11,7 @@ export class Footer extends React.Component {
             <footer className={`shadow-lg${this.props.isAuth() ? `` : ` d-none`}`}>
                 <menu>
                     <li>
-                        <NavLink activeclassname={'active'} to={"/home"} className="d-flex flex-column text-decoration-none text-muted">
+                        <NavLink activeclassname={'active'} to={"/"} className="d-flex flex-column text-decoration-none text-muted">
                             <span className="d-flex flex-row align-content-center mt-2 justify-content-center">
                                 <i className="icon-directions_car" />
                             </span>
@@ -19,7 +19,7 @@ export class Footer extends React.Component {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink activeclassname={'active'} to={"/home"} className="d-flex flex-column text-decoration-none text-muted">
+                        <NavLink activeclassname={'active'} to={"/user/favorite.html"} className="d-flex flex-column text-decoration-none text-muted">
                             <span className="d-flex flex-row align-content-center mt-2 justify-content-center">
                                 <i className="icon-star_outline" />
                             </span>
@@ -27,7 +27,7 @@ export class Footer extends React.Component {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink activeclassname={'active'} to={"/home"} className="d-flex flex-column text-decoration-none text-muted">
+                        <NavLink activeclassname={'active'} to={"/user/tickets.html"} className="d-flex flex-column text-decoration-none text-muted">
                             <span className="d-flex flex-row align-content-center mt-2 justify-content-center">
                                 <i className="icon-assignment" />
                             </span>
@@ -35,12 +35,12 @@ export class Footer extends React.Component {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink activeclassname={'active'} to={"/home"} className="d-flex flex-column text-decoration-none text-muted">
+                        <span className="d-flex flex-column text-decoration-none text-muted">
                             <span className="d-flex flex-row align-content-center mt-2 justify-content-center">
                                 <i className="icon-more_horiz" />
                             </span>
                             <span className="d-flex flex-row justify-content-center mt-1">Еще</span>
-                        </NavLink>
+                        </span>
                     </li>
                 </menu>
             </footer>
