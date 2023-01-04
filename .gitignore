@@ -4,6 +4,7 @@
 /config/
 /config/platform/
 /build/*
+/www/*
 /plugins/*
 /platforms/*
 /public/*
