@@ -11,7 +11,7 @@ const request = async (method, props = false, signal = false, requestMethod = 'G
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'DB-VER': db_ver,
-            'UF-TOKEN': token
+	        'UF-TOKEN': token
         })
     };
 
@@ -25,24 +25,29 @@ const request = async (method, props = false, signal = false, requestMethod = 'G
 
     return fetch(domain + method, settings).then(function(result){
 
-        if(result.status === 426){
-            window.dispatchEvent(new CustomEvent(`app.update`));
-            window.dispatchEvent(new CustomEvent(`app.stick`, { detail: { text: `Необходимо обновить кеш базы данных сервера` } }));
-            return { status: result.status, success: true, data: [] };
-        }
+	    if(result.status === 204){
+		    return { status: result.status, success: true, data: [] };
+	    }
+
+	    if(result.status === 401){
+		    localStorage.clear();
+		    window.location.reload(true);
+	    }
 
         if(result.status === 403){
             return { status: result.status, success: false, data: [] };
         }
 
-        if(result.status === 401){
-            window.dispatchEvent(new CustomEvent(`app.stick`, { detail: { show: true, text: `${result.status}: ${result.statusText}` } }));
-            return { status: result.status, success: false, data: [] };
-        }
+	    if(result.status === 404){
+		    // window.dispatchEvent(new CustomEvent(`app.stick`, { detail: { show: true, text: `${result.status}: ${result.statusText}` } }));
+		    return { status: result.status, success: false, data: [] };
+	    }
 
-        if(result.status === 204){
-            return { status: result.status, success: true, data: [] };
-        }
+	    if(result.status === 426){
+		    window.dispatchEvent(new CustomEvent(`app.update`));
+		    window.dispatchEvent(new CustomEvent(`app.stick`, { detail: { text: `Необходимо обновить кеш базы данных сервера` } }));
+		    return { status: result.status, success: true, data: [] };
+	    }
 
         return result.json();
     });

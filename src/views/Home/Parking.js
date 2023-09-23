@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Header } from "../../components/UI";
+import { Tabs, Home, Sector, Service, Zone } from "../../components/UI";
+import { Storage } from "../../components/App";
 
 import { Context } from "../../components/App/Context";
 
@@ -13,14 +14,23 @@ export class Parking extends React.Component {
     render(){
 
         return (
-            <>
-                <Header
-                    title={this.context.state.user.NAME}
-                    onClick={() => this.props.history.push('/user/profile.html')}
-                />
+            <Home.Search
+	            context={this.context}
+            >
 
-                <main />
-            </>
+                <Tabs tabs={[
+	                { name: 'Сектора', children: (
+		                <Sector.List filter={{MAP_ID: Number(this.context.state.user.object.UF_LOCATION)}} />
+	                ) },
+	                { name: 'Сервисы', children: (
+		                <Service.List filter={{MAP_ID: Number(this.context.state.user.object.UF_LOCATION)}}  />
+	                ) },
+	                { name: 'Зоны', children: (
+		                <Zone.List filter={{MAP_ID: Number(this.context.state.user.object.UF_LOCATION)}}  />
+	                ) }
+                ]} />
+
+            </Home.Search>
         );
     }
 }

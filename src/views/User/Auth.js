@@ -5,7 +5,8 @@ import { Context } from "../../components/App/Context";
 
 export class Auth extends React.Component {
 
-    static contextType = Context;
+	static contextType = Context;
+
 
     constructor(props){
         super(props);
@@ -18,12 +19,12 @@ export class Auth extends React.Component {
             }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.visiblePassword = this.visiblePassword.bind(this);
+        this.handleVisible = this.handleVisible.bind(this);
     }
 
     componentDidMount() {
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.visiblePassword = this.visiblePassword.bind(this);
+        this.handleVisible = this.handleVisible.bind(this);
     }
 
     componentWillUnmount() {
@@ -32,7 +33,7 @@ export class Auth extends React.Component {
         }
     }
 
-    visiblePassword = async (e) => {
+    handleVisible = async (e) => {
         await this.setState((prevState) => ({
             ...prevState,
             visible: !this.state.visible
@@ -78,27 +79,32 @@ export class Auth extends React.Component {
         return (errors === true) ? false : fields;
     };
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
         let validate = this.validate(e);
         if(validate === false) return false;
 
-        this.setState((prevState) => ({
+        await this.setState((prevState) => ({
             ...prevState,
             loading: true
         }));
 
-        window.dispatchEvent(new CustomEvent(`app.login`, { detail: {
-            LOGIN: this.state.data.LOGIN,
-            PASSWORD: this.state.data.PASSWORD,
-            UF_PUSH_TOKEN: false,
-            callback: () => {
-                this.setState((prevState) => ({
-                    ...prevState,
-                    loading: false
-                }));
-            }
-        }}));
+	    await this.context.login({
+		    LOGIN: this.state.data.LOGIN,
+		    PASSWORD: this.state.data.PASSWORD,
+		    UF_PUSH_TOKEN: false
+	    }).then(result => {
+	    	if(result === false){
+			    this.setState((prevState) => ({
+				    ...prevState,
+				    loading: false
+			    }));
+				this.context.dialog({
+				    header: "Не удалось авторизоваться",
+				    content: "Логин или пароль не верны. Обратитесь в техническую поддержку"
+			    })
+		    }
+	    });
     };
 
     render(){
@@ -136,7 +142,7 @@ export class Auth extends React.Component {
                                     onChange={this.handleChange}
                                     className={`form-control form-control-lg shadow`}
                                 />
-                                <span className="input-group-text bg-transparent fs-4" onClick={this.visiblePassword}>
+                                <span className="input-group-text bg-transparent fs-4" onClick={this.handleVisible}>
                                     <i className="icon icon-visibility_off" />
                                 </span>
                             </div>

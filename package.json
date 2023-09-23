@@ -8,10 +8,11 @@
     "@testing-library/user-event": "^13.5.0",
     "cordova_script": "^1.0.1",
     "dotenv": "^16.0.1",
+    "firebase": "^10.4.0",
     "history": "^5.2.0",
-    "path": "^0.12.7",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-hot-toast": "^2.4.1",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
     "react-scripts": "5.0.0",
@@ -70,6 +71,7 @@
   "author": "DataCyber-OrChuban, react.cordova: Apache Cordova Team and React.js",
   "license": "Apache-2.0",
   "devDependencies": {
+    "cordova-android": "^9.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-android-webview-manager": "^0.2.0",
@@ -87,7 +89,8 @@
       "cordova-plugin-android-webview-manager": {}
     },
     "platforms": [
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }

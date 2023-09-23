@@ -43,6 +43,10 @@ fs.readFile('./env-default', 'utf8', function (err, data) {
 
     result = result.replace(/%APP_VERSION%/g, config.APP_VERSION);
     result = result.replace(/%APP_VERSION_TYPE%/g, config.APP_VERSION_TYPE);
+	result = result.replace(/%APP_NAME%/g, config.APP_NAME);
+	result = result.replace(/%APP_DESCRIPTION%/g, config.APP_DESCRIPTION);
+	result = result.replace(/%APP_AUTHOR%/g, config.APP_AUTHOR);
+	result = result.replace(/%APP_AUTHOR_HREF%/g, config.APP_AUTHOR_HREF);
     result = result.replace(/%PROTOCOL%/g, config[argv.env].PROTOCOL);
     result = result.replace(/%DOMAIN%/g, config[argv.env].DOMAIN);
     result = result.replace(/%APP_PATH%/g, config[argv.env].PATH);

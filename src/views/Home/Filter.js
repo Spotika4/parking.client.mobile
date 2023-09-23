@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header } from "../../components/UI";
+import { Home, Car } from "../../components/UI";
 
 import { Context } from "../../components/App/Context";
 
@@ -13,14 +13,15 @@ export class Filter extends React.Component {
     render(){
 
         return (
-            <>
-                <Header
-                    title={this.context.state.user.NAME}
-                    onClick={() => this.props.history.push('/user/profile.html')}
-                />
+	        <Home.Search
+		        context={this.context}
+	        >
 
-                <main />
-            </>
+		        <Car.Filter
+		            context={this.context}
+		        />
+
+	        </Home.Search>
         );
     }
 }

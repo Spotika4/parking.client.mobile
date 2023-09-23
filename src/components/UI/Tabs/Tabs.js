@@ -28,8 +28,13 @@ export class Tabs extends React.Component {
 		}));
 
 		Swipe(this.ref.current);
-		this.ref.current.addEventListener("swipe-left", this.handleSwipe, true);
-		this.ref.current.addEventListener("swipe-right", this.handleSwipe, true);
+		if(this.props?.noSwipe && this.props?.noSwipe === true){
+
+		}else{
+
+			this.ref.current.addEventListener("swipe-left", this.handleSwipe, true);
+			this.ref.current.addEventListener("swipe-right", this.handleSwipe, true);
+		}
 	}
 
 	componentWillUnmount() {
@@ -69,18 +74,20 @@ export class Tabs extends React.Component {
 	render() {
 
 		return (
-			<div ref={this.ref} className="d-flex flex-column container-fluid p-0">
-				<ul className={"nav nav-tabs nav-fill border-bottom-0 w-100 overflow-hidden shadow ps-3 pe-3"}>
+			<div ref={this.ref} className={`d-flex flex-column container-fluid p-0 vw-100 ${this.props?.className}`}>
+				<ul className={"nav nav-tabs border-bottom-0 m-3 mb-0"}>
 					{this.props.tabs.map((tab, i) => (
-						<li className={`nav-item border-0 ${i === this.state.active ? 'border-bottom border-primary border-3 active ' : ''}`} key={i}>
-                            <span className="nav-link pt-2 pb-2 border-0" onClick={this.handleClick} key={i}>{tab.name}</span>
+						<li className={`nav-item me-4 border-0 pb-1 ${i === this.state.active ? 'border-bottom border-primary border-3' : ''} cursor-pointer`} key={i}>
+                            <h6 className={`border-0 m-0 text-start fw-500 ${i === this.state.active ? 'text-body' : 'text-muted'}`} onClick={this.handleClick} key={i}>
+	                            {tab.name}
+                            </h6>
 						</li>
 					))}
 				</ul>
 
-				<div className="tab-content w-100 h-100 d-flex overflow-hidden">
+				<div className="tab-content wh-100 h-100 d-flex overflow-hidden">
 					{this.props.tabs.map((tab, i) => (
-						<div key={i} className={`tab-pane d-block w-100 h-100 overflow-hidden fade show ${i === this.state.active ? ' active ' : ' '}`}>
+						<div key={i} className={`tab-pane d-block w-100 h-100 overflow-hidden fade show ${i === this.state.active ? 'active' : ''}`}>
                             {tab.children}
 						</div>
 					))}

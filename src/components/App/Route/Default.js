@@ -14,13 +14,13 @@ export const Default = ({ component: Component, ...rest }) => {
 		    render={ props => (
 		        (!isAuth()) ? (
 			        <Redirect to={{
-				        pathname: '/user/auth.html',
+				        pathname: '/auth',
 				        state: { from: props.location }
 			        }} />
 		        ) : (
                     (props.path === '/auth') ? (
                         <Redirect to={{
-                            pathname: '/user/auth.html',
+                            pathname: '/auth',
                             state: { from: props.location }
                         }} />
                     ) : (

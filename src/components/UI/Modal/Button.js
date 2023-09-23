@@ -22,7 +22,7 @@ export class Button extends React.Component {
 
 	render(){
 		return (
-			<button className={this.props.className} onClick={this.props.onClick} >
+			<button className={`${this.props.className} loading`} onClick={this.props.onClick} type={`button`}>
 				{this.props?.text}
 			</button>
 		)

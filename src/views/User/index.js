@@ -1,6 +1,6 @@
 import { Auth } from './Auth'
-import { Profile } from './Profile'
 import { Favorite } from './Favorite'
-import { Tickets } from './Tickets'
+import { Colleague } from './Colleague'
+import { Location } from './Location'
 
-export { Auth, Profile, Favorite, Tickets }
+export { Auth, Favorite, Colleague, Location }
