@@ -16,7 +16,6 @@ export class App extends Component {
     render() {
         return (
         	<>
-	            <Notification />
 	            <HashRouter>
 	                <Provider>
 	                    <Switch>

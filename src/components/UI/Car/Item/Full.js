@@ -400,12 +400,6 @@ export class Full extends React.Component {
 
 													</div>
 
-													{/* характеристики */}
-													{this.state.item.BLOCKED === true ? null : (
-
-														<Car.Item.Characteristic {...this.state.item} />
-													)}
-
 													{this.state.item.NECESSITATE_TOTAL === 0 ? null : (
 
 														<Necessitate.List.Forms
@@ -419,6 +413,29 @@ export class Full extends React.Component {
 															necessitates={this.state.necessitates?.added}
 															hasClosed={!this.props.context.state.user.object.ROLES?.SELLER}
 														/>
+													)}
+
+													{/* характеристики */}
+													{this.state.item.BLOCKED === true ? null : (
+														<>
+															<Car.Item.Characteristic {...this.state.item} />
+
+															<div className={`row`}>
+																<div className={`col-6 d-flex flex-fill`}>
+																	<Car.Item.Buttons.Parking
+																		title={`Припарковать`}
+																		handleParking={this.handleParking}
+																	/>
+																</div>
+
+																<div className={`col-6 d-flex flex-fill`}>
+																	<button className="flex-fill position-relative btn btn-primary text-center w-100 pt-4 pb-4 loading" disabled={true}>
+																		<i className="fa-solid fa-check-double fs-3" />
+																		<span className="d-block mt-2">Выдача</span>
+																	</button>
+																</div>
+															</div>
+														</>
 													)}
 
 													{/* добавление потребностей */}

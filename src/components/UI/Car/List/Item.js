@@ -41,21 +41,21 @@ export class Item extends React.Component {
 
 							{this.props.item.IGNITION_KEY === null ? null : (
 								this.props.item.IGNITION_KEY === 0 ? (
-									<i className={'icon icon-vpn_key ml-2 text-muted'} />
+									<i className={'fa-solid fa-key ml-2 text-muted'} />
 								) : (
 									this.props.item.IGNITION_KEY !== this.props.context.state.user.object.ID && this.props.item.IGNITION_KEY !== 0 ? (
-										<i className={'icon icon-vpn_key ml-2 text-danger'} />
+										<i className={'fa-solid fa-key me-2 text-danger'} />
 									) : (
-										<i className={'icon icon-vpn_key ml-2 text-success'} />
+										<i className={'fa-solid fa-key me-2 text-success'} />
 									)
 								)
 							)}
 
 							{this.props.item.ACCUMULATOR === null ? null : (
-								<i className={'icon icon-offline_bolt ml-2 text-danger'} />
+								<i className={'fa-solid fa-car-battery ml-2 text-danger'} />
 							)}
 
-							<i className={this.props.item.IS_FAVORITE === true ? `text-warning icon icon-star_purple500` : 'icon text-muted icon-star_outline ms-2'} />
+							<i className={this.props.item.IS_FAVORITE === true ? `text-danger icon icon-local_fire_department` : 'icon text-muted icon-local_fire_department ms-2'} />
 
 						</div>
 					</div>
